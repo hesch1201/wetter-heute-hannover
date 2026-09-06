@@ -21,7 +21,7 @@
 
   html,body{
     margin:0;
-    height:100%;
+    min-height:100%;
   }
 
   body{
@@ -33,6 +33,7 @@
     justify-content:center;
     min-height:100vh;
     padding: 32px 20px;
+    overflow-x: hidden;
     transition: background 0.6s ease;
   }
 
@@ -55,28 +56,29 @@
   }
 
   .icon{
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 8px;
+    width: 60px;
+    height: 60px;
+    margin: 4px auto 10px;
     color: var(--ink);
   }
 
-  .icon svg{ width:100%; height:100%; display:block; }
+  .icon svg{ width:100%; height:100%; display:block; overflow: visible; }
 
   .temp{
     font-family: 'Fraunces', serif;
     font-optical-sizing: auto;
     font-weight: 480;
-    font-size: clamp(72px, 22vw, 108px);
-    line-height: 1;
+    font-size: clamp(64px, 19vw, 96px);
+    line-height: 1.25;
     margin: 4px 0 2px;
+    padding: 6px 0 0;
     letter-spacing: -0.02em;
   }
 
   .temp sup{
     font-size: 0.35em;
     font-weight: 400;
-    top: -0.55em;
+    top: -0.5em;
     position: relative;
     margin-left: 2px;
   }
@@ -155,7 +157,7 @@
     color: var(--ink);
   }
 
-  .tpoint .ticon svg{ width:100%; height:100%; display:block; }
+  .tpoint .ticon svg{ width:100%; height:100%; display:block; overflow: visible; }
 
   .tpoint .tval{
     font-size: 15px;
@@ -238,13 +240,13 @@
   var ACCENT = '#E3A857';
 
   var ICONS = {
-    sun: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="32" cy="32" r="12"/><path d="M32 6v8M32 50v8M6 32h8M50 32h8M14 14l5.5 5.5M44.5 44.5L50 50M50 14l-5.5 5.5M19.5 44.5L14 50"/></svg>',
-    cloudSun: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="22" cy="20" r="8"/><path d="M22 4v4M8 20h4M34 12l-2.8 2.8M9.2 32.8L12 30"/><path d="M42 50H20a10 10 0 0 1-1.2-19.9A13 13 0 0 1 44 26a9 9 0 0 1-2 24Z"/></svg>',
-    cloud: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M46 48H20a11 11 0 1 1 2-21.8A14.5 14.5 0 0 1 50 30a10 10 0 0 1-4 18Z"/></svg>',
-    fog: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 24h30M10 34h44M14 44h30M28 54h20"/></svg>',
-    rain: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M44 34H20a11 11 0 1 1 2-21.8A14.5 14.5 0 0 1 48 16a10 10 0 0 1-4 18Z"/><path d="M22 46l-3 8M32 46l-3 8M42 46l-3 8"/></svg>',
-    snow: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M44 32H20a11 11 0 1 1 2-21.8A14.5 14.5 0 0 1 48 14a10 10 0 0 1-4 18Z"/><path d="M22 46v10M17 51l10-10M27 51l-10-10M42 46v10M37 51l10-10M47 51l-10-10"/></svg>',
-    storm: '<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M42 30H20a11 11 0 1 1 2-21.8A14.5 14.5 0 0 1 46 12a10 10 0 0 1-4 18Z"/><path d="M33 38l-8 12h7l-4 10 11-14h-7l4-8Z" stroke-linejoin="round"/></svg>'
+    sun: '<svg viewBox="-6 -6 76 76" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="32" cy="32" r="12"/><path d="M32 6v8M32 50v8M6 32h8M50 32h8M14 14l5.5 5.5M44.5 44.5L50 50M50 14l-5.5 5.5M19.5 44.5L14 50"/></svg>',
+    cloudSun: '<svg viewBox="-6 -6 76 76" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="22" cy="20" r="8"/><path d="M22 4v4M8 20h4M34 12l-2.8 2.8M9.2 32.8L12 30"/><path d="M42 50H20a10 10 0 0 1-1.2-19.9A13 13 0 0 1 44 26a9 9 0 0 1-2 24Z"/></svg>',
+    cloud: '<svg viewBox="-6 -6 76 76" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M46 48H20a11 11 0 1 1 2-21.8A14.5 14.5 0 0 1 50 30a10 10 0 0 1-4 18Z"/></svg>',
+    fog: '<svg viewBox="-6 -6 76 76" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 24h30M10 34h44M14 44h30M28 54h20"/></svg>',
+    rain: '<svg viewBox="-6 -6 76 76" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M44 34H20a11 11 0 1 1 2-21.8A14.5 14.5 0 0 1 48 16a10 10 0 0 1-4 18Z"/><path d="M22 46l-3 8M32 46l-3 8M42 46l-3 8"/></svg>',
+    snow: '<svg viewBox="-6 -6 76 76" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M44 32H20a11 11 0 1 1 2-21.8A14.5 14.5 0 0 1 48 14a10 10 0 0 1-4 18Z"/><path d="M22 46v10M17 51l10-10M27 51l-10-10M42 46v10M37 51l10-10M47 51l-10-10"/></svg>',
+    storm: '<svg viewBox="-6 -6 76 76" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M42 30H20a11 11 0 1 1 2-21.8A14.5 14.5 0 0 1 46 12a10 10 0 0 1-4 18Z"/><path d="M33 38l-8 12h7l-4 10 11-14h-7l4-8Z" stroke-linejoin="round"/></svg>'
   };
 
   var SPEAKER_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9v6h4l5 4V5L8 9H4Z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></svg>';
@@ -371,30 +373,46 @@
     var linePath = 'M' + pts.map(function(p){ return p[0].toFixed(1)+','+p[1].toFixed(1); }).join(' L');
     var areaPath = linePath + ' L' + w.toFixed(1) + ',' + h + ' L0,' + h + ' Z';
 
+    var gridYs = [pad, pad + (h - 2*pad)/2, h - pad];
+    var gridLines = gridYs.map(function(y){
+      return '<line x1="0" y1="' + y.toFixed(1) + '" x2="' + w + '" y2="' + y.toFixed(1) + '" stroke="' + INK + '" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="2,4"/>';
+    }).join('');
+
     var svg =
-      '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" style="width:100%;height:88px;display:block;">' +
+      '<svg viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" style="width:100%;height:88px;display:block;overflow:visible;">' +
         '<defs><linearGradient id="tgrad" x1="0" y1="0" x2="0" y2="1">' +
           '<stop offset="0%" stop-color="' + INK + '" stop-opacity="0.16"/>' +
           '<stop offset="100%" stop-color="' + INK + '" stop-opacity="0"/>' +
         '</linearGradient></defs>' +
+        gridLines +
         '<path d="' + areaPath + '" fill="url(#tgrad)" stroke="none"/>' +
         '<path d="' + linePath + '" fill="none" stroke="' + INK + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>' +
         '<circle cx="' + pts[0][0].toFixed(1) + '" cy="' + pts[0][1].toFixed(1) + '" r="3.4" fill="' + ACCENT + '" stroke="' + WASH_BG_FALLBACK() + '" stroke-width="1.5"/>' +
       '</svg>';
+
+    var yAxisWidth = 28, yAxisGap = 8;
+    var yAxisHtml =
+      '<div style="display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;width:' + yAxisWidth + 'px;height:' + h + 'px;margin-right:' + yAxisGap + 'px;flex:0 0 auto;">' +
+        '<span style="font-size:10px;color:var(--muted);line-height:1;">' + Math.round(max) + '\u00b0</span>' +
+        '<span style="font-size:10px;color:var(--muted);line-height:1;">' + Math.round((max+min)/2) + '\u00b0</span>' +
+        '<span style="font-size:10px;color:var(--muted);line-height:1;">' + Math.round(min) + '\u00b0</span>' +
+      '</div>';
+
+    var chartRow = '<div style="display:flex;align-items:stretch;">' + yAxisHtml + '<div style="flex:1;min-width:0;">' + svg + '</div></div>';
 
     var labelStep = Math.max(1, Math.round((count-1)/4));
     var labelIdxs = [];
     for (var li=0; li<count; li+=labelStep){ labelIdxs.push(li); }
     if (labelIdxs[labelIdxs.length-1] !== count-1) labelIdxs.push(count-1);
 
-    var labelsHtml = '<div style="display:flex;justify-content:space-between;margin-top:8px;">' +
+    var labelsHtml = '<div style="display:flex;justify-content:space-between;margin-top:8px;margin-left:' + (yAxisWidth+yAxisGap) + 'px;">' +
       labelIdxs.map(function(li){
         var lbl = li === 0 ? 'Jetzt' : hourLabel(hourly.time[startIdx+li]);
         return '<span style="font-size:11px;color:var(--muted);">' + lbl + '</span>';
       }).join('') +
     '</div>';
 
-    return svg + labelsHtml;
+    return chartRow + labelsHtml;
   }
 
   function WASH_BG_FALLBACK(){ return '#EDF1F2'; }
